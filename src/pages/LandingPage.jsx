@@ -109,17 +109,15 @@ const LandingPage = () => {
               </div>
             </div>
             
-            {/* Visual element / video placeholder */}
             <div className="md:col-span-5 relative">
-              <div className="aspect-video md:aspect-square bg-slate-900 rounded-2xl overflow-hidden shadow-2xl relative group flex items-center justify-center">
-                {/* <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/40 to-slate-900/90 mix-blend-multiply z-10"></div> */}
-                <img 
-                  src="src/assets/heropic.webp"
-                  alt="Digital Marketing Session"
-                  className="w-full h-full object-cover absolute inset-0 transform group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-            </div>
+  <div className="w-full aspect-square max-w-sm mx-auto md:max-w-none bg-slate-900 rounded-2xl overflow-hidden shadow-2xl relative group">
+    <img
+      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
+      alt="Digital Marketing Session"
+      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+    />
+  </div>
+</div>
 
 
           </div>
