@@ -9,6 +9,8 @@ import Footer from '../components/Footer';
 import CourseSelection from '../components/CourseSelection';
 import Navbar from '../components/Navbar';
 import heroimage from "../assets/heroimage.png";
+import shiv from "../assets/shiv.png"
+
 
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -332,7 +334,7 @@ const LandingPage = () => {
             <div className="md:col-span-5 max-w-sm mx-auto md:mx-0">
               <div className="aspect-[4/5] bg-slate-800 rounded-3xl overflow-hidden border border-slate-700 p-3 shadow-2xl">
                 <img
-                  src="src/assets/shiv.png"
+                  src={shiv}
                   alt="Shivanshu Sir"
                   className="w-full h-full object-cover rounded-2xl"
                 />

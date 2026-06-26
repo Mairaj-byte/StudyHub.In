@@ -1,4 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
+// 1. Your imports are correct!
+import image1 from "../assets/image1.jpeg";
+import image2 from "../assets/image2.png";
+import image3 from "../assets/image3.png";
+import image4 from "../assets/image4.png";
+import image5 from "../assets/image5.png";
+import image6 from "../assets/image6.png";
+import image7 from "../assets/image7.png";
 
 // Custom intersection observer hook for scroll animations
 function useScrollReveal() {
@@ -45,15 +53,10 @@ function CourseCard({ id, title, rating, reviews, instructor, price, originalPri
         
         {/* Dynamic Course Image */}
         <img
-          src={image}
+          src={image} // This now receives the actual imported asset object/URL
           alt={title}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
         />
-
-        {/* Status Badge */}
-        {/* <span className={`absolute top-4 left-4 text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-md z-10 ${badgeColor}`}>
-          {badge}
-        </span> */}
       </div>
 
       {/* Right Side: Content Details */}
@@ -84,6 +87,7 @@ function CourseCard({ id, title, rating, reviews, instructor, price, originalPri
 }
 
 export default function CourseSelection() {
+  // 2. Updated the image keys here to reference the actual imported variables without quotes.
   const courses = [
     {
       title: "Complete Digital Marketing Mastermind (All-in-One Blueprint)",
@@ -95,7 +99,7 @@ export default function CourseSelection() {
       badge: "Live + Recorded",
       badgeColor: "bg-emerald-600",
       link: "#digital-marketing-details",
-      image: "src/assets/image1.jpeg"
+      image: image1
     },
     {
       title: "Advanced SEO & Link Building Course (Rank #1 on Google)",
@@ -104,10 +108,9 @@ export default function CourseSelection() {
       instructor: "Shivanshu Sir",
       price: "3,499",
       originalPrice: "5,500",
-      // badge: "Recorded Version",
       badgeColor: "bg-red-600",
       link: "#seo-details",
-      image: "src/assets/image2.png"
+      image: image2
     },
     {
       title: "Google Ads Masterclass with AI Automation (2026 Edition)",
@@ -119,7 +122,7 @@ export default function CourseSelection() {
       badge: "Recorded Version",
       badgeColor: "bg-red-600",
       link: "#google-ads-details",
-      image: "src/assets/image3.png"
+      image: image3
     },
     {
       title: "Meta Ads (Facebook & Instagram) Framework with AI Targeting",
@@ -131,7 +134,7 @@ export default function CourseSelection() {
       badge: "Live Workshop",
       badgeColor: "bg-emerald-600",
       link: "#meta-ads-details",
-      image: "src/assets/image4.png"
+      image: image4
     },
     {
       title: "Social Media Marketing Bootcamp: Content to Conversions",
@@ -143,7 +146,7 @@ export default function CourseSelection() {
       badge: "Recorded Version",
       badgeColor: "bg-red-600",
       link: "#smm-details",
-      image: "src/assets/image5.png"
+      image: image5
     },
     {
       title: "Social Media Management & Agency Growth Suite",
@@ -155,7 +158,7 @@ export default function CourseSelection() {
       badge: "Live + Recorded",
       badgeColor: "bg-emerald-600",
       link: "#smm-management-details",
-      image: "src/assets/image6.png"
+      image: image6
     },
     {
       title: "Google My Business & Local SEO Domination Course",
@@ -167,7 +170,7 @@ export default function CourseSelection() {
       badge: "Recorded Version",
       badgeColor: "bg-red-600",
       link: "#gmb-details",
-      image: "src/assets/image7.png"
+      image: image7
     }
   ];
 
