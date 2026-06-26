@@ -8,6 +8,7 @@ import {
 import Footer from '../components/Footer';
 import CourseSelection from '../components/CourseSelection';
 import Navbar from '../components/Navbar';
+import heroimage from "../assets/heroimage.png";
 
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -97,7 +98,7 @@ const LandingPage = () => {
                 {/* 3. The Cutout Portrait Image */}
                 <div className="relative z-10 w-[90%] h-[105%] flex items-end overflow-visible">
                   <img
-                    src="src/assets/heroimage.png"
+                    src={heroimage}
                     alt="Digital Marketing Expert"
                     className="w-full h-auto max-h-full object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.3)] group-hover:scale-[1.02] transition-transform duration-500 easy-out"
                   />
