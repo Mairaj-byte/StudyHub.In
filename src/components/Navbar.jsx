@@ -1,0 +1,123 @@
+import React, { useState } from "react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+
+const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    return (
+        <>
+            {/* Outer Floating Shell */}
+            <div className="sticky top-0 z-50 w-full px-4 sm:px-6 lg:px-8 pt-4 pointer-events-none">
+                <nav className="max-w-7xl mx-auto bg-white/70 backdrop-blur-md border border-slate-200/50 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0,04)] pointer-events-auto transition-all duration-300">
+                    <div className="px-4 sm:px-6 lg:px-8">
+                        <div className="flex justify-between h-16 sm:h-20 items-center">
+
+
+
+                            {/* Brand Logo Wrapper */}
+                            {/* Brand Logo Wrapper */}
+                            <div className="flex items-center group cursor-pointer">
+                                <img
+                                    src="https://edu.novanectar.co.in/assets/nav-logo-BrPcRVjp.png"
+                                    alt="NovaNectar"
+                                    className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                                />
+                            </div>
+
+
+
+
+                            {/* Desktop Dynamic Links */}
+                            <div className="hidden md:flex items-center gap-10 font-semibold text-slate-600 text-sm tracking-wide uppercase">
+                                <a href="#features" className="relative py-2 transition-colors hover:text-slate-900 group">
+                                    Curriculum
+                                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-indigo-600 transition-all duration-300 group-hover:w-full" />
+                                </a>
+                                <a href="#roadmap" className="relative py-2 transition-colors hover:text-slate-900 group">
+                                    Learning Path
+                                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-indigo-600 transition-all duration-300 group-hover:w-full" />
+                                </a>
+                                <a href="#instructor" className="relative py-2 transition-colors hover:text-slate-900 group">
+                                    Instructor
+                                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-indigo-600 transition-all duration-300 group-hover:w-full" />
+                                </a>
+                                <a href="#pricing" className="relative py-2 transition-colors hover:text-slate-900 group">
+                                    Pricing
+                                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-indigo-600 transition-all duration-300 group-hover:w-full" />
+                                </a>
+                            </div>
+
+                            {/* Action Button Segment */}
+                            <div className="hidden md:flex items-center">
+                                <a
+                                    href="#pricing"
+                                    className="group relative inline-flex items-center gap-1.5 overflow-hidden rounded-xl bg-slate-900 px-6 py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-indigo-600 hover:shadow-indigo-200 duration-300"
+                                >
+                                    <span>Enroll Now</span>
+                                    <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                                </a>
+                            </div>
+
+                            {/* Modern Minimalistic Mobile Trigger */}
+                            <div className="md:hidden">
+                                <button
+                                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                    className="text-slate-800 p-2.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-slate-100 transition-colors duration-200"
+                                    aria-label="Toggle menu"
+                                >
+                                    {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            {/* Immersive Mobile Overlay Menu */}
+            <div
+                className={`fixed inset-0 z-40 bg-slate-900/40 backdrop-blur-md transition-opacity duration-300 md:hidden ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                    }`}
+                onClick={() => setIsMenuOpen(false)}
+            >
+                <div
+                    className={`absolute top-24 left-4 right-4 bg-white border border-slate-100 rounded-3xl p-6 shadow-2xl transition-all duration-300 origin-top transform ${isMenuOpen ? "translate-y-0 scale-100 opacity-100" : "-translate-y-4 scale-95 opacity-0"
+                        }`}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <div className="flex flex-col space-y-2">
+                        <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2 px-3">Navigation</p>
+                        {[
+                            { label: "Curriculum", href: "#features" },
+                            { label: "Learning Path", href: "#roadmap" },
+                            { label: "Instructor", href: "#instructor" },
+                            { label: "Pricing", href: "#pricing" }
+                        ].map((link) => (
+                            <a
+                                key={link.label}
+                                href={link.href}
+                                onClick={() => setIsMenuOpen(false)}
+                                className="flex items-center justify-between p-3 rounded-xl text-slate-700 font-semibold hover:bg-slate-50 hover:text-indigo-600 transition-all duration-200"
+                            >
+                                <span>{link.label}</span>
+                                <ArrowUpRight size={16} className="opacity-0 transition-all -translate-x-2 group-hover:opacity-100 text-indigo-600" />
+                            </a>
+                        ))}
+
+                        <div className="pt-4 mt-2 border-t border-slate-100">
+                            <a
+                                href="#pricing"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="w-full inline-flex items-center justify-center gap-2 bg-indigo-600 text-white py-3.5 rounded-xl font-bold transition-transform active:scale-[0.98] shadow-lg shadow-indigo-100"
+                            >
+                                <span>Enroll Now</span>
+                                <ArrowUpRight size={18} />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+};
+
+export default Navbar;

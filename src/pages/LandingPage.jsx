@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { 
-  Menu, X, CheckCircle, Star, BookOpen, Target, Award, 
-  ArrowRight, Users, ChevronDown, ChevronUp, Zap, 
+import {
+  Menu, X, CheckCircle, Star, BookOpen, Target, Award,
+  ArrowRight, Users, ChevronDown, ChevronUp, Zap,
   TrendingUp, Globe, ShieldCheck, Play
 } from 'lucide-react';
+
+import Footer from '../components/Footer';
+import CourseSelection from '../components/CourseSelection';
+import Navbar from '../components/Navbar';
 
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,75 +35,44 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 font-sans antialiased selection:bg-indigo-500 selection:text-white">
-      
-      {/* 1. NAVBAR */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-20 items-center">
-            <div className="flex items-center gap-2">
-              <img src="https://tse1.mm.bing.net/th/id/OIP.dKiU1kUiu6rQ8dc4gWbOrQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" 
-              alt="NovaNectar Logo" className="h-10 w-10 border-white rounded-full" />
 
-              <span className="text-xl font-bold tracking-tight text-slate-900">
-                NovaNectar<span className="text-indigo-600">.</span>
-              </span>
-            </div>
-            
-            {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-8 font-medium text-slate-600">
-              <a href="#features" className="hover:text-indigo-600 transition-colors">Curriculum</a>
-              <a href="#roadmap" className="hover:text-indigo-600 transition-colors">Learning Path</a>
-              <a href="#instructor" className="hover:text-indigo-600 transition-colors">Instructor</a>
-              <a href="#pricing" className="hover:text-indigo-600 transition-colors">Pricing</a>
-              <a href="#pricing" className="bg-indigo-600 text-white px-5 py-2.5 rounded-xl hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100 text-sm">
-                Enroll Now
-              </a>
-            </div>
 
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-slate-700 p-2">
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-        </div>
+      <Navbar />
 
-        {/* Mobile Dropdown Nav */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 absolute w-full left-0 shadow-xl animate-fadeIn">
-            <a href="#features" onClick={()=>setIsMenuOpen(false)} className="block py-2 text-slate-600 font-medium">Curriculum</a>
-            <a href="#roadmap" onClick={()=>setIsMenuOpen(false)} className="block py-2 text-slate-600 font-medium">Learning Path</a>
-            <a href="#instructor" onClick={()=>setIsMenuOpen(false)} className="block py-2 text-slate-600 font-medium">Instructor</a>
-            <a href="#pricing" onClick={()=>setIsMenuOpen(false)} className="block py-2 text-slate-600 font-medium">Pricing</a>
-            <a href="#pricing" onClick={()=>setIsMenuOpen(false)} className="block text-center bg-indigo-600 text-white py-3 rounded-xl font-semibold">
-              Enroll Now
-            </a>
-          </div>
-        )}
-      </nav>
+
 
       {/* 2. HERO SECTION */}
-      <header className="relative pt-12 pb-20 md:pt-24 md:pb-32 overflow-hidden">
-        <div className="absolute top-0 right-0 -z-10 w-1/3 h-1/3 bg-indigo-100 rounded-full blur-3xl opacity-50"></div>
+      {/* CHANGED: pt-2 to pt-4, and md:pt-24 to md:pt-8 to pull content closer to the navbar */}
+      <header className="relative pt-4 pb-20 md:pt-8 md:pb-32 overflow-hidden bg-slate-50/50">
+        {/* Soft Background Glow Effects */}
+        <div className="absolute top-0 right-0 -z-10 w-1/3 h-1/3 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
         <div className="absolute bottom-10 left-10 -z-10 w-1/4 h-1/4 bg-emerald-100 rounded-full blur-3xl opacity-40"></div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
-          <div className="grid md:grid-cols-12 gap-12 items-center">
-            <div className="md:col-span-7 space-y-6">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100">
-                <Zap size={14} className="fill-indigo-600" /> Master Digital Marketing in 2026
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+
+            {/* Left Content Column */}
+            <div className="md:col-span-7 space-y-6 flex flex-col items-center md:items-start">
+              {/* Highlight Tag */}
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">
+                <Zap size={14} className="fill-blue-600 text-blue-600" /> Master Digital Marketing in 2026
               </span>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-none">
+
+              {/* Main Heading */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight md:leading-none">
                 Transform Into An Elite <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                   Digital Marketer
                 </span>
               </h1>
+
+              {/* Description Text */}
               <p className="text-lg text-slate-600 max-w-xl mx-auto md:mx-0 font-normal leading-relaxed">
                 Learn end-to-end performance marketing, SEO, and AI automation tools directly from India's premium mentor, <strong className="text-slate-900 font-semibold">Shivanshu Sir</strong>.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-2">
+
+              {/* Call to Actions */}
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center md:justify-start pt-2">
                 <a href="#pricing" className="inline-flex items-center justify-center gap-2 bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-700 shadow-xl shadow-indigo-200 transition-all hover:-translate-y-0.5">
                   Claim Your Seat <ArrowRight size={18} />
                 </a>
@@ -108,79 +81,109 @@ const LandingPage = () => {
                 </a>
               </div>
             </div>
-            
-            <div className="md:col-span-5 relative">
-  <div className="w-full aspect-square max-w-sm mx-auto md:max-w-none bg-slate-900 rounded-2xl overflow-hidden shadow-2xl relative group">
-    <img
-      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
-      alt="Digital Marketing Session"
-      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-    />
-  </div>
-</div>
 
+            {/* Right Media Column */}
+            <div className="md:col-span-5 relative w-full">
+              <div className="relative w-full max-w-lg mx-auto md:max-w-none aspect-[4/3] md:aspect-square flex items-end justify-center group">
+
+                {/* 1. Decorative Glow / Backdrop Accent */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-3xl blur opacity-0 group-hover:opacity-25 transition duration-1000"></div>
+
+                {/* 2. The Curved Solid Background Shape */}
+                <div className="absolute bottom-0 right-4 w-[85%] h-[85%] bg-gradient-to-br from-blue-700 to-indigo-900 rounded-tl-[120px] rounded-br-[80px] rounded-tr-[40px] rounded-bl-[40px] shadow-xl overflow-hidden">
+                  <div className="absolute inset-0 bg-white/5 mix-blend-overlay"></div>
+                </div>
+
+                {/* 3. The Cutout Portrait Image */}
+                <div className="relative z-10 w-[90%] h-[105%] flex items-end overflow-visible">
+                  <img
+                    src="src/assets/heroimage.png"
+                    alt="Digital Marketing Expert"
+                    className="w-full h-auto max-h-full object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.3)] group-hover:scale-[1.02] transition-transform duration-500 easy-out"
+                  />
+                </div>
+
+                {/* 4. Floating Badges */}
+                {/* Meta Badge */}
+                <div className="absolute left-4 bottom-1/4 z-20 flex items-center gap-2 bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl shadow-lg border border-slate-100 animate-bounce [animation-duration:4s]">
+                  <span className="text-blue-600 font-bold tracking-tight text-sm">∞ Meta</span>
+                </div>
+
+                {/* Google Ads Badge */}
+                <div className="absolute right-0 top-1/3 z-20 flex items-center gap-2 bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl shadow-lg border border-slate-100 animate-bounce [animation-duration:5s]">
+                  <div className="w-4 h-4 bg-yellow-400 rounded-sm transform rotate-12"></div>
+                  <span className="text-slate-700 font-medium text-xs md:text-sm">Google Ads</span>
+                </div>
+
+                {/* SEO Badge */}
+                <div className="absolute left-12 top-12 z-20 flex items-center gap-1 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-xl shadow-md border border-slate-100 animate-bounce [animation-duration:6s]">
+                  <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">🚀 SEO</span>
+                </div>
+
+              </div>
+            </div>
 
           </div>
         </div>
       </header>
 
       {/* 3. TRUST & SOCIAL PROOF */}
-<section className="bg-white border-y border-slate-100 py-10">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+      <section className="bg-white border-y border-slate-100 py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
 
-      {/* Companies */}
-      <div className="text-center lg:text-left">
-        <p className="text-sm font-semibold uppercase tracking-wider text-slate-400">
-          Trusted By Professionals At
-        </p>
+            {/* Companies */}
+            <div className="text-center lg:text-left">
+              <p className="text-sm font-semibold uppercase tracking-wider text-slate-400">
+                Trusted By Professionals At
+              </p>
 
-        <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-3 grayscale opacity-60 font-black text-lg sm:text-xl text-slate-600 tracking-tight">
-          <span>GOOGLE</span>
-          <span>AMAZON</span>
-          <span>META</span>
-          <span>ZOMATO</span>
+              <div className="flex flex-wrap justify-center lg:justify-start gap-4 mt-3 grayscale opacity-60 font-black text-lg sm:text-xl text-slate-600 tracking-tight">
+                <span>GOOGLE</span>
+                <span>AMAZON</span>
+                <span>META</span>
+                <span>ZOMATO</span>
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 text-center">
+
+              <div>
+                <p className="text-2xl sm:text-3xl font-black text-slate-900">
+                  15,000+
+                </p>
+                <p className="text-xs font-medium text-slate-500">
+                  Students Trained
+                </p>
+              </div>
+
+              <div>
+                <p className="text-2xl sm:text-3xl font-black text-indigo-600 flex items-center justify-center gap-1">
+                  4.9
+                  <Star
+                    size={18}
+                    className="fill-amber-400 text-amber-400"
+                  />
+                </p>
+                <p className="text-xs font-medium text-slate-500">
+                  Google Rating
+                </p>
+              </div>
+
+              <div>
+                <p className="text-2xl sm:text-3xl font-black text-slate-900">
+                  94%
+                </p>
+                <p className="text-xs font-medium text-slate-500">
+                  Placement Rate
+                </p>
+              </div>
+
+            </div>
+          </div>
         </div>
-      </div>
-
-      {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-10 text-center">
-
-        <div>
-          <p className="text-2xl sm:text-3xl font-black text-slate-900">
-            15,000+
-          </p>
-          <p className="text-xs font-medium text-slate-500">
-            Students Trained
-          </p>
-        </div>
-
-        <div>
-          <p className="text-2xl sm:text-3xl font-black text-indigo-600 flex items-center justify-center gap-1">
-            4.9
-            <Star
-              size={18}
-              className="fill-amber-400 text-amber-400"
-            />
-          </p>
-          <p className="text-xs font-medium text-slate-500">
-            Google Rating
-          </p>
-        </div>
-
-        <div>
-          <p className="text-2xl sm:text-3xl font-black text-slate-900">
-            94%
-          </p>
-          <p className="text-xs font-medium text-slate-500">
-            Placement Rate
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* 4. COURSE HIGHLIGHTS */}
       <section id="features" className="py-20 bg-slate-50">
@@ -206,6 +209,8 @@ const LandingPage = () => {
         </div>
       </section>
 
+      <CourseSelection />
+
       {/* 5. WHY CHOOSE US */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -213,7 +218,7 @@ const LandingPage = () => {
             <div className="space-y-6">
               <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Why Choose NovaNectar?</h2>
               <p className="text-slate-600">Standard institutes teach outdated theories. NovaNectar adapts rapidly to algorithmic shifts, ensuring your marketing strategy remains ahead of the curve.</p>
-              
+
               <div className="space-y-4 pt-2">
                 {[
                   "AI Integration: Learn Prompting for Ad copies & Midjourney for Visuals",
@@ -257,7 +262,7 @@ const LandingPage = () => {
             <span className="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Flagship Program</span>
             <h2 className="text-3xl font-black text-slate-900 mt-3">The Ultimate Digital Marketing Blueprint</h2>
           </div>
-          
+
           <div className="bg-white rounded-3xl border border-slate-200/80 shadow-xl overflow-hidden grid md:grid-cols-12">
             <div className="p-8 md:p-12 md:col-span-7 flex flex-col justify-between space-y-6">
               <div>
@@ -325,9 +330,9 @@ const LandingPage = () => {
           <div className="grid md:grid-cols-12 gap-12 items-center">
             <div className="md:col-span-5 max-w-sm mx-auto md:mx-0">
               <div className="aspect-[4/5] bg-slate-800 rounded-3xl overflow-hidden border border-slate-700 p-3 shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" 
-                  alt="Shivanshu Sir" 
+                <img
+                  src="src/assets/shiv.png"
+                  alt="Shivanshu Sir"
                   className="w-full h-full object-cover rounded-2xl"
                 />
               </div>
@@ -338,7 +343,7 @@ const LandingPage = () => {
               <p className="text-slate-400 leading-relaxed">
                 Shivanshu Sir is a seasoned growth strategist, consultant, and founder with over a decade of industry expertise building direct-to-consumer funnels. He has handled <strong>₹10Cr+ in ad spend</strong> and engineered scalable frameworks for top digital start-ups.
               </p>
-              
+
               <div className="grid grid-cols-2 gap-4 border-t border-slate-800 pt-6">
                 <div>
                   <h4 className="text-2xl font-bold text-indigo-400">10+ Years</h4>
@@ -401,7 +406,7 @@ const LandingPage = () => {
                 <span className="flex items-center gap-1.5 text-xs bg-slate-100 px-3 py-1.5 rounded-md font-medium text-slate-600"><Globe size={14} /> LinkedIn shareable</span>
               </div>
             </div>
-            
+
             {/* Visual Certificate Mockup */}
             <div className="lg:col-span-7 bg-slate-50 p-6 sm:p-10 rounded-3xl border border-slate-200/60 relative shadow-inner">
               <div className="bg-white p-6 sm:p-8 rounded-xl border-4 border-double border-slate-200 aspect-[1.4/1] flex flex-col justify-between shadow-xl">
@@ -412,7 +417,7 @@ const LandingPage = () => {
                   </div>
                   <Award className="text-indigo-600" size={32} />
                 </div>
-                
+
                 <div className="text-center my-4">
                   <p className="text-[10px] uppercase tracking-wider text-slate-400">This credential certifies that</p>
                   <h3 className="text-xl sm:text-2xl font-serif text-slate-900 my-1 font-bold">Your Professional Name</h3>
@@ -444,7 +449,7 @@ const LandingPage = () => {
             <div className="absolute top-0 right-0 bg-indigo-600 text-white text-xs font-bold tracking-widest px-6 py-2 uppercase rounded-bl-xl shadow-md">
               Most Popular
             </div>
-            
+
             <div className="p-8 sm:p-12">
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4">
                 <div>
@@ -502,7 +507,7 @@ const LandingPage = () => {
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div key={index} className="border border-slate-200/80 rounded-2xl overflow-hidden transition-all bg-slate-50/50">
-                <button 
+                <button
                   onClick={() => setActiveFaq(activeFaq === index ? null : index)}
                   className="w-full flex justify-between items-center p-5 text-left font-semibold text-slate-800 hover:bg-slate-50 transition-colors"
                 >
@@ -520,61 +525,16 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* 13. FOOTER */}
-      <footer className="bg-slate-900 text-slate-400 text-sm border-t border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <div className="h-8 w-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-black text-base">N</div>
-                <span className="text-lg font-bold text-white tracking-tight">NovaNectar.</span>
-              </div>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Empowering modern professionals with elite practical digital marketing frameworks globally.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-4">Curriculum</h4>
-              <ul className="space-y-2 text-xs">
-                <li><a href="#features" className="hover:text-white transition-colors">Performance Marketing</a></li>
-                <li><a href="#features" className="hover:text-white transition-colors">Advanced SEO Blueprint</a></li>
-                <li><a href="#features" className="hover:text-white transition-colors">AI Content Strategy</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-4">Company</h4>
-              <ul className="space-y-2 text-xs">
-                <li><a href="#instructor" className="hover:text-white transition-colors">About Mentor</a></li>
-                <li><a href="#pricing" className="hover:text-white transition-colors">Pricing Options</a></li>
-                <li><span className="text-slate-600">Careers (Hiring)</span></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-200 mb-4">Support</h4>
-              <p className="text-xs text-slate-500 mb-2">Have issues? Reach out instantly:</p>
-              <p className="text-xs font-semibold text-slate-300">support@novanectar.com</p>
-            </div>
-          </div>
-          
-          <div className="border-t border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-600">
-            <p>© 2026 NovaNectar Inc. Directed by Shivanshu Sir. All rights reserved.</p>
-            <div className="flex gap-4">
-              <span className="hover:text-slate-400 cursor-pointer">Terms of Service</span>
-              <span>•</span>
-              <span className="hover:text-slate-400 cursor-pointer">Privacy Policy</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
     </div>
   );
 };
 
 /* Micro-icons used in Featured Card */
-const ClockIcon = () => <svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>;
-const LayersIcon = () => <svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>;
-const UserIcon = () => <svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>;
-const BriefcaseIcon = () => <svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>;
+const ClockIcon = () => <svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>;
+const LayersIcon = () => <svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>;
+const UserIcon = () => <svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>;
+const BriefcaseIcon = () => <svg className="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>;
 
 export default LandingPage;
