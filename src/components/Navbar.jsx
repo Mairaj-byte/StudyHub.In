@@ -6,26 +6,33 @@ const Navbar = () => {
 
     return (
         <>
+            {/* Injecting CSS Animation for the Left-to-Right Moving Marquee */}
+            <style>{`
+                @keyframes marqueeRight {
+                    0% { transform: translateX(-100%); }
+                    100% { transform: translateX(100%); }
+                }
+                .animate-marquee-right {
+                    animation: marqueeRight 20s linear infinite;
+                }
+            `}</style>
+
             {/* Outer Floating Shell */}
             <div className="sticky top-0 z-50 w-full px-4 sm:px-6 lg:px-8 pt-4 pointer-events-none">
-                <nav className="max-w-7xl mx-auto bg-white/70 backdrop-blur-md border border-slate-200/50 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0,04)] pointer-events-auto transition-all duration-300">
+                <nav className="max-w-7xl mx-auto bg-white/70 backdrop-blur-md border border-slate-200/50 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] pointer-events-auto transition-all duration-300">
                     <div className="px-4 sm:px-6 lg:px-8">
-                        <div className="flex justify-between h-16 sm:h-20 items-center">
+                        {/* Adjusted height from h-16/h-20 to h-20/h-24 to comfortably adapt to the larger logo */}
+                        <div className="flex justify-between h-20 sm:h-24 items-center">
 
-
-
-                            {/* Brand Logo Wrapper */}
                             {/* Brand Logo Wrapper */}
                             <div className="flex items-center group cursor-pointer">
                                 <img
                                     src="https://edu.novanectar.co.in/assets/nav-logo-BrPcRVjp.png"
                                     alt="NovaNectar"
-                                    className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                                    
+                                    className="h-14 sm:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                                 />
                             </div>
-
-
-
 
                             {/* Desktop Dynamic Links */}
                             <div className="hidden md:flex items-center gap-10 font-semibold text-slate-600 text-sm tracking-wide uppercase">
@@ -70,7 +77,17 @@ const Navbar = () => {
                             </div>
                         </div>
                     </div>
+                    {/* Moving Discount Ticker Bar (Left to Right) */}
+                <div className="max-w-7xl mx-auto mt-3 overflow-hidden bg-indigo-600 text-white py-2 px-4 rounded-b-xl shadow-sm pointer-events-auto">
+                    <div className="whitespace-nowrap animate-marquee-right text-xs sm:text-sm font-bold tracking-wider uppercase">
+                        ⚡ Limited Time Offer: Get up to 50% off on all certification programs! Use code: NEON50 ⚡
+                    </div>
+                </div>
                 </nav>
+
+                
+
+
             </div>
 
             {/* Immersive Mobile Overlay Menu */}
@@ -80,7 +97,7 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
             >
                 <div
-                    className={`absolute top-24 left-4 right-4 bg-white border border-slate-100 rounded-3xl p-6 shadow-2xl transition-all duration-300 origin-top transform ${isMenuOpen ? "translate-y-0 scale-100 opacity-100" : "-translate-y-4 scale-95 opacity-0"
+                    className={`absolute top-28 left-4 right-4 bg-white border border-slate-100 rounded-3xl p-6 shadow-2xl transition-all duration-300 origin-top transform ${isMenuOpen ? "translate-y-0 scale-100 opacity-100" : "-translate-y-4 scale-95 opacity-0"
                         }`}
                     onClick={(e) => e.stopPropagation()}
                 >
