@@ -10,6 +10,7 @@ import CourseSelection from '../components/CourseSelection';
 import Navbar from '../components/Navbar';
 import heroimage from "../assets/heroimage.png";
 import shiv from "../assets/shiv.png"
+import ContactUs from '../components/ContactUs';
 
 
 const LandingPage = () => {
@@ -98,7 +99,7 @@ const LandingPage = () => {
                 </div>
 
                 {/* 3. The Cutout Portrait Image */}
-                <div className="relative z-10 w-[90%] h-[105%] flex items-end overflow-visible">
+                <div className="relative z-10 w-[95%] h-[110%] flex items-end overflow-visible">
                   <img
                     src={heroimage}
                     alt="Digital Marketing Expert"
@@ -527,6 +528,9 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+
+
+      <ContactUs />
 
       <Footer />
 

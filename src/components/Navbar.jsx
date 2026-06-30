@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Search } from "lucide-react";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        console.log("Searching for:", searchQuery);
+        // Add your search routing or filter logic here
+    };
 
     return (
         <>
@@ -29,7 +36,6 @@ const Navbar = () => {
                                 <img
                                     src="https://edu.novanectar.co.in/assets/nav-logo-BrPcRVjp.png"
                                     alt="NovaNectar"
-                                    
                                     className="h-14 sm:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                                 />
                             </div>
@@ -50,6 +56,11 @@ const Navbar = () => {
                                 </a>
                                 <a href="#pricing" className="relative py-2 transition-colors hover:text-slate-900 group">
                                     Pricing
+                                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-indigo-600 transition-all duration-300 group-hover:w-full" />
+                                </a>
+                                {/* Added Contact Us Link */}
+                                <a href="/connect" className="relative py-2 transition-colors hover:text-slate-900 group">
+                                    Contact Us
                                     <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-indigo-600 transition-all duration-300 group-hover:w-full" />
                                 </a>
                             </div>
@@ -77,37 +88,52 @@ const Navbar = () => {
                             </div>
                         </div>
                     </div>
-                    {/* Moving Discount Ticker Bar (Left to Right) */}
-                <div className="max-w-7xl mx-auto mt-3 overflow-hidden bg-indigo-600 text-white py-2 px-4 rounded-b-xl shadow-sm pointer-events-auto">
-                    <div className="whitespace-nowrap animate-marquee-right text-xs sm:text-sm font-bold tracking-wider uppercase">
-                        ⚡ Limited Time Offer: Get up to 50% off on all certification programs! Use code: NEON50 ⚡
+                    
+                    {/* Moving Discount Ticker Bar (Left to Right) - Reduced gap using mt-1 */}
+                    <div className="max-w-7xl mx-auto mt-1 overflow-hidden bg-indigo-600 text-white py-2 px-4 rounded-b-xl shadow-sm pointer-events-auto">
+                        <div className="whitespace-nowrap animate-marquee-right text-xs sm:text-sm font-bold tracking-wider uppercase">
+                            ⚡ Limited Time Offer: Get up to 50% off on all certification programs! Use code: NEON50 ⚡
+                        </div>
                     </div>
-                </div>
                 </nav>
-
-                
-
-
             </div>
 
             {/* Immersive Mobile Overlay Menu */}
             <div
-                className={`fixed inset-0 z-40 bg-slate-900/40 backdrop-blur-md transition-opacity duration-300 md:hidden ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-                    }`}
+                className={`fixed inset-0 z-40 bg-slate-900/40 backdrop-blur-md transition-opacity duration-300 md:hidden ${
+                    isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                }`}
                 onClick={() => setIsMenuOpen(false)}
             >
                 <div
-                    className={`absolute top-28 left-4 right-4 bg-white border border-slate-100 rounded-3xl p-6 shadow-2xl transition-all duration-300 origin-top transform ${isMenuOpen ? "translate-y-0 scale-100 opacity-100" : "-translate-y-4 scale-95 opacity-0"
-                        }`}
+                    className={`absolute top-36 left-4 right-4 bg-white border border-slate-100 rounded-3xl p-6 shadow-2xl transition-all duration-300 origin-top transform ${
+                        isMenuOpen ? "translate-y-0 scale-100 opacity-100" : "-translate-y-4 scale-95 opacity-0"
+                    }`}
                     onClick={(e) => e.stopPropagation()}
                 >
                     <div className="flex flex-col space-y-2">
-                        <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2 px-3">Navigation</p>
+                        {/* Search Bar Block for Mobile View */}
+                        <div className="mb-4 px-1">
+                            <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2">Search</p>
+                            <form onSubmit={handleSearchSubmit} className="relative w-full">
+                                <input
+                                    type="text"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    placeholder="Search courses, tracks..."
+                                    className="w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-indigo-600 focus:bg-white transition-all duration-200"
+                                />
+                                <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+                            </form>
+                        </div>
+
+                        <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2 px-1">Navigation</p>
                         {[
                             { label: "Curriculum", href: "#features" },
                             { label: "Learning Path", href: "#roadmap" },
                             { label: "Instructor", href: "#instructor" },
-                            { label: "Pricing", href: "#pricing" }
+                            { label: "Pricing", href: "#pricing" },
+                            { label: "Contact Us", href: "/connect" }
                         ].map((link) => (
                             <a
                                 key={link.label}
