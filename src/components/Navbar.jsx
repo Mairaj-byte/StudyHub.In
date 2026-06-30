@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Menu, X, ArrowUpRight, Search } from "lucide-react";
+import ContactPage from "../pages/ContactPage";
+import {Link} from 'react-router-dom';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,11 +60,17 @@ const Navbar = () => {
                                     Pricing
                                     <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-indigo-600 transition-all duration-300 group-hover:w-full" />
                                 </a>
+
                                 {/* Added Contact Us Link */}
-                                <a href="/connect" className="relative py-2 transition-colors hover:text-slate-900 group">
-                                    Contact Us
-                                    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-indigo-600 transition-all duration-300 group-hover:w-full" />
-                                </a>
+                               {/* Added Contact Us Link */}
+<Link
+  to="/connect"
+  className="relative py-2 transition-colors hover:text-slate-900 group"
+>
+  Contact Us
+  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-indigo-600 transition-all duration-300 group-hover:w-full" />
+</Link>
+                                
                             </div>
 
                             {/* Action Button Segment */}
